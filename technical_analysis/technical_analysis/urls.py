@@ -17,13 +17,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from technical_analysis_app import views
+from django.urls import path, include
 
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
+    path('', views.create_view),
+    path('list', views.list_view),
+    path('detail/<id>', views.detail_view),
+    path('update/<id>',views.update_view),
+    path('api/', include('technical_analysis_app.urls')),
+
+
+    # path('', include("apis.urls")),
+    # path('api-auth/', include('rest_framework.urls')),
 ]
 
 
